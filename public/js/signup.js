@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 $(document).ready(function() {
   // Getting references to our form and input
   var signUpForm = $("form.signup");
@@ -24,11 +25,12 @@ $(document).ready(function() {
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(email, password) {
+    // eslint-disable-next-line no-undef
     $.post("/api/signup", {
       email: email,
       password: password
     })
-      .then(function(data) {
+      .then(function() {
         window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
