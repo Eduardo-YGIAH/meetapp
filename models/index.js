@@ -11,7 +11,12 @@ var db = {};
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  new Sequelize(config.database, config.username, config.password, config);
+  new Sequelize(
+    config.database,
+    config.username,
+    process.env.DB_PASSWORD,
+    config
+  );
 }
 
 fs.readdirSync(__dirname)
