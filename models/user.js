@@ -4,6 +4,16 @@ var bcrypt = require("bcryptjs");
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     // The email cannot be null, and must be a proper email before creation
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -12,9 +22,19 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
-    // The password cannot be null
+
     password: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    image: {
+      type: DataTypes.BLOB,
+      allowNull: false
+    },
+
+    locationID: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   });
@@ -25,7 +45,35 @@ module.exports = function(sequelize, DataTypes) {
   // Hooks are automatic methods that run during various phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
   User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    user.password = bcrypt.hashSync(
+      user.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
   });
   return User;
+};
+
+module.exports = function(sequelize, DataTypes) {
+  var Meet = sequelize.define("Meet", {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    locationID: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    userID: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
+  });
+  return Meet;
 };
