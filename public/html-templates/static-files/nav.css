@@ -31,6 +31,10 @@
   text-decoration: none;
 }
 
+.nav-logo {
+  z-index: 100;
+}
+
 .nav-links-list {
   display: flex;
   /* this class is added on medium to small screens */
@@ -79,8 +83,10 @@
   position: absolute;
   top: 0;
   right: 0;
-  transform: translateX(0%);
+  transform: translateX(100%);
   transition: transform 0.5s ease-in;
+  visibility: hidden;
+  display: none;
 }
 
 .nav-slider-link-item {
@@ -107,7 +113,7 @@
 }
 
 .nav-active {
-  transform: translateX(100%);
+  transform: translateX(0%);
 }
 
 .burger {
@@ -149,6 +155,8 @@
     display: block;
   }
   .nav-slider-links {
+    display: flex;
+    visibility: visible;
     width: 100%;
   }
   .nav-links-list {

@@ -8,14 +8,15 @@
       href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Righteous|Work+Sans:400,600&display=swap"
       rel="stylesheet"
     />
-    <link href="./nav.css" rel="stylesheet" />
+    <link href="./static-files/nav.css" rel="stylesheet" />
+    <script defer src="./static-files/nav.js"></script>
     <title>Navegation</title>
   </head>
   <body>
     <nav class="navbarContainer">
       <div class="navLinksContainer">
         <!-- Link the h2 to load home when clicked -->
-        <h2><a class="logo" href="/">Meetapp</a></h2>
+        <h2 class="nav-logo"><a class="logo" href="/">Meetapp</a></h2>
 
         <!-- The uls need to be a handlebars partial -->
         <!-- --------------- -->
@@ -47,12 +48,12 @@
       <div class="line3"></div>
     </div>
 
-    <!-- <ul class="nav-slider-links">
+    <!-- <ul class="nav-slider-links user-logged-out">
       <li class="nav-slider-link-item"></li>
       <li class="nav-slider-link-item"><a class="nav-link" href="/login">Login</a></li>
       <li class="nav-slider-link-item"><a class="nav-link" href="/signup">Signup</a></li>
     </ul> -->
-    <ul class="nav-slider-links nav-active">
+    <ul class="nav-slider-links nav-active user-logged-in">
       <li class="nav-slider-link-item slider-avatar-li">
         <a class="nav-link" href="/profile"><img class="avatar" src="../../assets/avatars/image_1.jpg"/></a>
         <div class="user-details-container">
@@ -68,6 +69,5 @@
         <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
       </li>
     </ul>
-    <script src="nav.js"></script>
   </body>
 </html>
