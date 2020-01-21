@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Meets', {
+    return queryInterface.createTable("Meets", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,7 +24,9 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Meets');
+
+  // eslint-disable-next-line no-unused-vars
+  down: (queryInterface, _Sequelize) => {
+    return queryInterface.dropTable("Users");
   }
 };
