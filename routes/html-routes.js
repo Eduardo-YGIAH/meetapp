@@ -8,15 +8,15 @@ module.exports = function(app) {
   app.get('/', function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect('/members');
+      res.redirect('/index');
     }
-    res.sendFile(path.join(__dirname, '../public/signup.html'));
+    res.sendFile(path.join(__dirname, '../public/html-templates/landing.html'));
   });
 
   app.get('/login', function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect('/landing');
+      res.redirect('/index');
     }
     res.sendFile(path.join(__dirname, '../public/login.html'));
   });
@@ -27,8 +27,19 @@ module.exports = function(app) {
   // app.get('/landing', isAuthenticated, function(req, res) {
   //   res.sendFile(path.join(__dirname, '../public/html-templates/landing-page/landing.html'));
   // });
+  app.get('/signup', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/signup.html'));
+  });
 
   app.get('/landing', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/html-templates/landing.html'));
+  });
+
+  app.get('/index', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/html-templates/index.html'));
+  });
+
+  app.get('/slider', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/html-templates/slider.html'));
   });
 };

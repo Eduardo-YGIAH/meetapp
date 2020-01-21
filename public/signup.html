@@ -1,66 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Passport Authentication</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Righteous|Work+Sans:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./static-files/login-signup.css" rel="stylesheet" />
+    <link href="./static-files/nav.css" rel="stylesheet" />
+    <script defer src="./static-files/nav.js"></script>
+  </head>
 
-<head>
-  <title>Passport Authentication</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="stylesheets/style.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Righteous|Work+Sans:400,600&display=swap" rel="stylesheet">
+  <body>
+    <nav class="navbarContainer">
+      <div class="navLinksContainer">
+        <!-- Link the h2 to load home when clicked -->
+        <h2 class="nav-logo"><a class="logo" href="/">Meetapp</a></h2>
 
-</head>
-
-<body>
-  <nav class="navbarContainer">
-    <div class="navLinksContainer">
-        <h1 class= "logo">Meetapp</h1>
-        <ul class="links">
-          <li class="dummy">Create a Meet </li>
-          <li class="dummy">Book a Meet</li>
-          <li class="dummy">Profile</li>
+        <!-- The uls need to be a handlebars partial -->
+        <!-- --------------- -->
+        <!-- Render this ul if user is logged out -->
+        <ul class="nav-links-list user-logged-out">
+          <li class="nav-link-item"><a class="nav-link" href="#">Login</a></li>
+          <li class="nav-link-item"><a class="nav-link" href="#">Signup</a></li>
         </ul>
+        <!-- --------------- -->
+        <!-- Render this ul if user is logged in  -->
+        <!-- <ul class="nav-links-list user-logged-in">
+          <li class="nav-link-item">
+            <a class="nav-link" href="/meets">My <span class="brand">Meets</span></a>
+          </li>
+          <li class="nav-link-item"><a class="nav-link" href="/bookings">My Bookings</a></li>
+          <li class="nav-link-item">
+            <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
+          </li>
+          image is dinamacly selected from user object
+          <li class="nav-link-item">
+            <a class="nav-link" href="/profile"><img class="avatar" src="../../assets/avatars/image_1.jpg"/></a>
+          </li>
+        </ul> -->
+      </div>
+    </nav>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
     </div>
-  </nav>
 
-  <div class="container">
-    <div class="row">
-      <div class = "contentBody">
-        <div class="col-md-6 col-md-offset-3">
-          <h2>Sign Up Form</h2>
-          <hr>
-          <form class="signup">
-            <div class="form-group">
+    <ul class="nav-slider-links user-logged-out">
+      <li class="nav-slider-link-item"></li>
+      <li class="nav-slider-link-item"><a class="nav-link" href="/login">Login</a></li>
+      <li class="nav-slider-link-item"><a class="nav-link" href="/signup">Signup</a></li>
+    </ul>
+    <!-- <ul class="nav-slider-links user-logged-in">
+      <li class="nav-slider-link-item slider-avatar-li">
+        <a class="nav-link" href="/profile"><img class="avatar" src="../../assets/avatars/image_1.jpg"/></a>
+        <div class="user-details-container">
+          <div class="user-name">Eduardo Neto</div>
+          <div class="user-location">Royal Leamington Spa</div>
+        </div>
+      </li>
+      <li class="nav-slider-link-item">
+        <a class="nav-link" href="/meets">My <span class="brand">Meets</span></a>
+      </li>
+      <li class="nav-slider-link-item"><a class="nav-link" href="/bookings">My Bookings</a></li>
+      <li class="nav-slider-link-item">
+        <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
+      </li>
+    </ul> -->
+
+    <div class="container">
+      <div class="row">
+        <div class="contentBody">
+          <div class="col-md-6 col-md-offset-3">
+            <h2>Sign Up Form</h2>
+            <hr />
+            <form class="signup">
+              <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input type="firstName" class="form-control" id="firstName-input" placeholder="First Name">
-            </div>
-            <div class="form-group">
+                <input type="firstName" class="form-control" id="firstName-input" placeholder="First Name" />
+              </div>
+              <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="lastName" class="form-control" id="lastName-input" placeholder="Last Name">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="email-input" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="password-input" placeholder="Password">
-            </div>
-            <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-              <span class="sr-only">Error:</span> <span class="msg"></span>
-            </div>
-            <button type="submit" class="btn btn-default">Sign Up</button>
-          </form>
-          <br />
-          <p>Or log in <a href="/login">here</a></p>
+                <input type="lastName" class="form-control" id="lastName-input" placeholder="Last Name" />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="email-input" placeholder="Email" />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="password-input" placeholder="Password" />
+              </div>
+              <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> <span class="msg"></span>
+              </div>
+              <button type="submit" class="btn-submit">Sign Up</button>
+            </form>
+            <br />
+            <p>Or log in <a href="/login">here</a></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/signup.js"></script>
-
-</body>
-
+  </body>
 </html>

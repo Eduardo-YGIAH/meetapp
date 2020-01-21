@@ -6,29 +6,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"> -->
-  <link href="stylesheets/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Righteous|Work+Sans:400,600&display=swap" rel="stylesheet">
+  <link href="./static-files/login-signup.css" rel="stylesheet">
+  <link href="./static-files/nav.css" rel="stylesheet" />
+  <script defer src="./static-files/nav.js"></script>
 </head>
 
 <body>
   <nav class="navbarContainer">
     <div class="navLinksContainer">
-      <!-- <div class="navbar-header"> -->
-          <h1 class= "logo">Meetapp</h1>
-          <ul class="links">
-            <li class="dummy">nfkjsdnks</li>
-            <li class="dummy">nfkjsdnks</li>
-            <li class="dummy">nfkjsdnks</li>
-          </ul>
-          
-      <!-- </div> -->
+      <!-- Link the h2 to load home when clicked -->
+      <h2 class="nav-logo"><a class="logo" href="/">Meetapp</a></h2>
+
+      <!-- The uls need to be a handlebars partial -->
+      <!-- --------------- -->
+      <!-- Render this ul if user is logged out -->
+      <ul class="nav-links-list user-logged-out">
+        <li class="nav-link-item"><a class="nav-link" href="#">Login</a></li>
+        <li class="nav-link-item"><a class="nav-link" href="#">Signup</a></li>
+      </ul>
+      <!-- --------------- -->
+      <!-- Render this ul if user is logged in  -->
+      <!-- <ul class="nav-links-list user-logged-in">
+        <li class="nav-link-item">
+          <a class="nav-link" href="/meets">My <span class="brand">Meets</span></a>
+        </li>
+        <li class="nav-link-item"><a class="nav-link" href="/bookings">My Bookings</a></li>
+        <li class="nav-link-item">
+          <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
+        </li>
+        image is dinamacly selected from user object
+        <li class="nav-link-item">
+          <a class="nav-link" href="/profile"><img class="avatar" src="../../assets/avatars/image_1.jpg"/></a>
+        </li>
+      </ul> -->
     </div>
   </nav>
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+
+  <ul class="nav-slider-links user-logged-out">
+    <li class="nav-slider-link-item"></li>
+    <li class="nav-slider-link-item"><a class="nav-link" href="/login">Login</a></li>
+    <li class="nav-slider-link-item"><a class="nav-link" href="/signup">Signup</a></li>
+  </ul>
+  <!-- <ul class="nav-slider-links user-logged-in">
+    <li class="nav-slider-link-item slider-avatar-li">
+      <a class="nav-link" href="/profile"><img class="avatar" src="../../assets/avatars/image_1.jpg"/></a>
+      <div class="user-details-container">
+        <div class="user-name">Eduardo Neto</div>
+        <div class="user-location">Royal Leamington Spa</div>
+      </div>
+    </li>
+    <li class="nav-slider-link-item">
+      <a class="nav-link" href="/meets">My <span class="brand">Meets</span></a>
+    </li>
+    <li class="nav-slider-link-item"><a class="nav-link" href="/bookings">My Bookings</a></li>
+    <li class="nav-slider-link-item">
+      <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
+    </li>
+  </ul> -->
 
   <div class = "contentBodyContainer">
       <div class = "contentBody">
           <h2>Login Form</h2>
-          <hr class="divider">
+      
           <form class="login">
             <div class="form-group">
               <label for="InputEmail1">Email address</label>
@@ -41,9 +86,8 @@
           </br>
             <button type="submit" class="btn-submit">Login</button>
         </form>
-        <p>Or sign up <a href="signup.html">here</a></p>
-      </div>
-      
+        <p>Or sign up <a href="/signup">here</a></p>
+      </div> 
   </div>
   
 

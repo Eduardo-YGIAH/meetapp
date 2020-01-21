@@ -20,31 +20,31 @@
       <!-- NAVEGATION COMPONENT -->
       <nav class="navbarContainer">
         <div class="navLinksContainer">
-          <!-- Link the h2 to load home when clicked -->
+          <!-- Link the h2 to load /index when clicked if user not authenticated redirect to /landing -->
           <h2 class="nav-logo"><a class="logo" href="/">Meetapp</a></h2 class="nav-logo">
   
           <!-- The uls need to be a handlebars partial -->
           <!-- --------------- -->
           <!-- Render this ul if user is logged out -->
-          <ul class="nav-links-list user-logged-out">
+          <!-- <ul class="nav-links-list user-logged-out">
             <li class="nav-link-item"><a class="nav-link" href="#">Login</a></li>
             <li class="nav-link-item"><a class="nav-link" href="#">Signup</a></li>
-          </ul>
+          </ul> -->
           <!-- --------------- -->
           <!-- Render this ul if user is logged in  -->
-          <!-- <ul class="nav-links-list user-logged-in">
+          <ul class="nav-links-list user-logged-in">
             <li class="nav-link-item">
               <a class="nav-link" href="/meets">My <span class="brand">Meets</span></a>
             </li>
             <li class="nav-link-item"><a class="nav-link" href="/bookings">My Bookings</a></li>
             <li class="nav-link-item">
               <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
-            </li> -->
+            </li> 
             <!-- image is dinamacly selected from user object -->
-            <!-- <li class="nav-link-item">
-              <a class="nav-link" href="/profile"><img class="avatar" src="../../assets/avatars/image_1.jpg"/></a>
+             <li class="nav-link-item">
+              <a class="nav-link" href="/profile"><img class="avatar" src="./static-files/image_1.jpg"/></a>
             </li>
-          </ul> --> 
+          </ul> 
         </div>
       </nav>
       <div class="burger">
@@ -53,14 +53,14 @@
         <div class="line3"></div>
       </div>
   
-      <ul class="nav-slider-links user-logged-out">
+      <!-- <ul class="nav-slider-links user-logged-out">
         <li class="nav-slider-link-item"></li>
         <li class="nav-slider-link-item"><a class="nav-link" href="/login">Login</a></li>
         <li class="nav-slider-link-item"><a class="nav-link" href="/signup">Signup</a></li>
-      </ul>
-      <!-- <ul class="nav-slider-links nav-active user-logged-in">
+      </ul> -->
+      <ul class="nav-slider-links user-logged-in">
         <li class="nav-slider-link-item slider-avatar-li">
-          <a class="nav-link" href="/profile"><img class="avatar" src="../../assets/avatars/image_1.jpg"/></a>
+          <a class="nav-link" href="/profile"><img class="avatar" src="./static-files/image_1.jpg"/></a>
           <div class="user-details-container">
             <div class="user-name">Eduardo Neto</div>
             <div class="user-location">Royal Leamington Spa</div>
@@ -73,26 +73,25 @@
         <li class="nav-slider-link-item">
           <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
         </li>
-      </ul> -->
+      </ul>
       <!-- -------------------- -->
       <header class="header-container">
           <div class="background">
               <img src="./static-files/people_shadow.svg" alt="background-shadow-of-people-in-party">
           </div>
-        <h1 class="main-heading">Meet new people like you!</h1>
-        <h2 class="sub-heading">Find a <span class="brand sub-heading">Meet</span> for you or create your own!</h2>
-        <form action="/api/search-location" method="GET" class="search-form">
+        <h1 class="main-heading">Hi Tom! Here are <span class="brand" style="color: #F44336;">Meets</span> in Birmingham.</h1>
+        <h2 class="sub-heading">Click your favourite to see details and book attendance.</h2>
+        <!-- <form action="/api/search-location" method="GET" class="search-form">
         
             <label class="search-location-label" for="search-location"><span class="brand">Meets</span> in your location</label>
             <div class="autocomplete">
                 <input type="text" class="search-location-input" id="search-location" name="search-location" placeholder="Enter your location" autocomplete="off">
             </div>
             <button class="btn-search-location">SHOW MEETS</button>
-        </form>
-        <div class="overlay">
-    
-        </div>
+        </form> -->
+        <div class="overlay"></div>
     </header>
+    <!-- ---------------------- -->
     <div class="thumbnail-slider">
       <div class="thumbnail-container">
         <div class="item">
