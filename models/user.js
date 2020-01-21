@@ -6,13 +6,13 @@ module.exports = (sequelize, DataTypes) => {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      image: DataTypes.BLOB
+      password: DataTypes.STRING
     },
     {}
   );
   User.associate = function(models) {
-    User.hasMany(models.meets);
+    // User.hasMany(models.meet);
+    // User.belongsTo(models.mmet);
   };
   return User;
 };

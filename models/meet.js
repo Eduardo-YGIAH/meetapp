@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Meet.associate = function(models) {
-    Meet.hasMany(models.user);
+    // Meet.hasMany(models.User, { foreignKey: "id" });
   };
   return Meet;
 };

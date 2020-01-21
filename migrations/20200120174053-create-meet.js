@@ -25,8 +25,7 @@ module.exports = {
     });
   },
 
-  // eslint-disable-next-line no-unused-vars
-  down: (queryInterface, _Sequelize) => {
-    return queryInterface.dropTable("Users");
+  down: queryInterface => {
+    return queryInterface.dropTable("Meets");
   }
 };
