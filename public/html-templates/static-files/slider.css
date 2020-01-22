@@ -6,8 +6,14 @@ body {
   box-sizing: border-box;
 }
 
+.slider-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .thumbnail-slider {
-  margin-top: 50px;
+  margin-top: 10px;
   width: 100%;
   float: left;
   overflow: hidden;
@@ -24,8 +30,7 @@ body {
 .thumbnail-slider .item {
   height: 200px;
   background-color: #ffff;
-  /* line-height: 250px; */
-  /* text-align: center; */
+
   font-family: Work Sans;
   font-style: normal;
   font-weight: normal;

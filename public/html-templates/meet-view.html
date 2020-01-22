@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,6 +10,7 @@
     <link rel="stylesheet" href="./static-files/nav.css">
     <link rel="stylesheet" href="./static-files/landing.css" />
     <link rel="stylesheet" href="./static-files/slider.css">
+    <link rel="stylesheet" href="./static-files/meet-view.css">
     <script defer src="./static-files/nav.js"></script>
     <script defer src="./static-files/landing.js"></script>
     <script defer src="./static-files/slider.js" ></script>
@@ -73,76 +73,40 @@
           <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
         </li>
       </ul>
-      <!-- -------------------- -->
-      <div class="background">
-        <img src="./static-files/people_shadow.svg" alt="background-shadow-of-people-in-party">
-      </div>
-      <div class="overlay"></div>
-        <!-- -------------------- -->
-      <header class="content">
-        <h1 class="main-heading">Hi Tom! Here are <span class="brand-red">Meets</span> in Birmingham.</h1>
-        <h2 class="sub-heading">Click your favourite to see details and book attendance.</h2>
-        <!-- <form action="/api/search-location" method="GET" class="search-form">
-        
-            <label class="search-location-label" for="search-location"><span class="brand">Meets</span> in your location</label>
-            <div class="autocomplete">
-                <input type="text" class="search-location-input" id="search-location" name="search-location" placeholder="Enter your location" autocomplete="off">
+      <!-- ----------------------------------------------------------------- -->
+      <div class="content-container">
+          <div class="content-frame">
+            <div class="close-page">
+                <img src="https://res.cloudinary.com/ygiah/image/upload/v1579708459/meetap_icon_close_fgu12q.svg" alt="" class="btn-close">
             </div>
-            <button class="btn">SHOW MEETS</button>
-        </form> -->   
-    <!-- ---------------------- -->
-    <div class="slider-container">
-      <div class="thumbnail-slider">
-        <div class="thumbnail-container">
-          <div class="item">
-            <div class="card-meet">
-              <div class="img-meet-container">
-                <img class="img-meet" src="./static-files/christmas_party-min.jpg" alt="" />
+            <h2 class="brand divider">Meet</h2>
+              <div class="meet-view-frame"> 
+                  <div class="meet-main-img-container">
+                      <img src="./static-files/christmas_party-min.jpg" alt="" class="meet-main-img">
+                  </div>                  
+                    <h2 class="meet-title">Jan Christmas Party</h2>
+                    <div class="meet-profile">
+                    <div class="meet-view-colum-1">
+                      <div class="meet-details">
+                          <h4 class="meet-location">Birmingham</h4>   
+                          <h5 class="meet-date">Fri 24 Jan 2020</h5>
+                          <h5 class="meet-time">17:30</h5>
+                        </div>
+                        <div class="meet-organizer">
+                            <h4 class="organizer-name">Organizer: Jan Smith</h4>
+                            <h5 class="organizer-email red">jan@icloud.com</h5>
+                        </div>
+                        <div class="meet-address">
+                            <h5 class="address-line1">Some Pub</h5>
+                            <h5 class="line2">Some Street</h5>
+                            <h5 class="post-code">CV32 5HH</h5>
+                        </div>
+                    </div>
+                    <div class="meet-view-colum-2">
+                        <p class="meet-full-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur aspernatur quibusdam soluta ratione quae temporibus harum distinctio? Atque nihil dicta assumenda reprehenderit repellat voluptatum repudiandae sunt, quos illum dolore, enim, quam ratione voluptatem doloremque cum? Necessitatibus numquam ad ducimus. Facere pariatur officia voluptatibus repudiandae sint placeat deserunt incidunt, quos ratione excepturi amet nulla rem quisquam dolorem reiciendis? Asperiores esse quia quod doloremque voluptas consectetur et laboriosam. Iusto, nihil quos eaque itaque doloribus consectetur modi maxime, non reprehenderit corporis voluptates sit. Deserunt illum magnam officiis reiciendis tenetur cum blanditiis perferendis, nihil et mollitia, voluptatem officia recusandae necessitatibus sit adipisci ipsa voluptates.</p>
+                        <button type="button" class="btn-flat red">Attend this <span class="brand red">Meet</span></button>
+                    </div>
+                </div>
               </div>
-            </div>
-            <div class="card-meet-content">
-              <div class="card-meet-title">
-                <h2>Jen's Hen Party</h2>
-              </div>
-            </div>
-            <div class="card-meet-location-container">
-              <h5 class="card-meet-location">Birmingham</h5>
-            </div>
-            <div class="card-meet-details">
-              <h6 class="card-meet-date">Fri 24 Jan</h6>
-              <h6 class="card-meet-time">17:30</h6>
-            </div>
-            <div class="card-meet-description">
-              <p>Party peole are all welcome! Let's rock this party!</p>
-            </div>
           </div>
-          <div class="item">
-            2
-          </div>
-          <div class="item">
-            3
-          </div>
-          <div class="item">
-            4
-          </div>
-          <div class="item">
-            5
-          </div>
-          <div class="item">
-            6
-          </div>
-        </div>
-  
-        <!-- controls slides -->
-        <div class="controls"></div>
       </div>
-    </div>
-      <h2 class="call-to-action-heading">Create your own <span class="brand-red">Meet</span></h2>
-      <h3 class="call-to-action-sub-heading">If you haven't found the <span class="brand-red">Meet</span> you're looking for, why don't you create your own?</h3>
-      <div class="align-center">
-        <button class="btn">Create a <span class="brand">Meet</span></button>
-      </div>
-
-     </div>
-  </body>
-</html>

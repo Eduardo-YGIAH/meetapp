@@ -39,7 +39,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, '../public/html-templates/index.html'));
   });
 
-  app.get('/slider', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/html-templates/slider.html'));
+  app.get('/meet-view', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/html-templates/meet-view.html'));
   });
 };
