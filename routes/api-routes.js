@@ -7,6 +7,7 @@ module.exports = function(app) {
   app.get('/api/locations', function(req, res) {
     db.Location.findAll()
       .then(locations => {
+        console.log(locations);
         res.send(locations);
       })
       .catch(error => console.log(error));
