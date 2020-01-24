@@ -5,7 +5,10 @@ module.exports = function(app) {
   app.get('/', (req, res) => {
     // If the user already has an account send them to the index page
     if (req.user) {
-      db.User.findOne(db.User.email === req.user.email).then(user => {
+      db.User.findOne(db.User.email === req.user.email, {
+        attributes: ['id', 'first_name', 'last_name', 'email', 'locationId'],
+      }).then(user => {
+        console.log(user);
         res.render('index', {
           user,
         });
@@ -22,6 +25,7 @@ module.exports = function(app) {
           })
           .map(meet => {
             let dateString;
+            let dateFormated;
             let timeFormated = meet.time.substr(0, 5);
             dateString = meet.date.toString();
             dateFormated = dateString.substr(0, 16);
