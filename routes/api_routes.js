@@ -36,19 +36,19 @@ module.exports = function(app) {
   });
 
   // Route for getting some data about our user to be used client side
-  app.get('/api/user_data', function(req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id,
-      });
-    }
-  });
+  // app.get('/api/user_data', function(req, res) {
+  //   if (!req.user) {
+  // The user is not logged in, send back an empty object
+  //   res.json({});
+  // } else {
+  // Otherwise send back the user's email and id
+  // Sending back a password, even a hashed password, isn't a good idea
+  //     res.json({
+  //       email: req.user.email,
+  //       id: req.user.id,
+  //     });
+  //   }
+  // });
 
   app.get('/api/locations', function(req, res) {
     db.Location.findAll({
@@ -69,11 +69,63 @@ module.exports = function(app) {
       });
   });
 
-  app.post('/api/search-location', (req, res) => {
-    console.log(req.body.search_location);
+  app.get('/api/search_location', function(req, res) {
+    const town = req.body.search_location;
+    console.log(town);
 
-    res.redirect('/');
+    // db.Meet.findAll({ include: [db.Location] }).then(function (data) {
+    //     db.Location.findOne({
+    //       where: {
+    //         id:
+    //       }
+    //     })
+    //     var meetsInLocation = data.filter(function (meet) {
+    //         return meet.dataValues.locationId === false;
+    //     })
+    //     // gets all ice creams that are eaten
+    //     var iceCreamEaten = data.filter(function (ice_cream) {
+    //         return ice_cream.dataValues.devoured === true;
+    //     })
+    //     // sends back the list of eaten and not eaten icecreams to index.handlebars where the HTML is renderend
+    res.render('landing', { town });
   });
+
+  // app.get('/api/search_location', (req, res) => {
+  //   const town = req.body.search_location;
+  //   db.Meet.findAll(
+  //     {
+  //       attributes: ['id', 'title', 'date', 'time', 'image_url', 'description', 'locationId', 'organizerId'],
+  //     },
+  //     {
+  //       where: {
+  //         town: town,
+  //       },
+  //     },
+  //   ).then(meets => {
+  //     const meetsArray = meets
+  //       .map(meet => {
+  //         return {
+  //           ...meet.dataValues,
+  //         };
+  //       })
+  //       .map(meet => {
+  //         let dateString;
+  //         let dateFormated;
+  //         let timeFormated = meet.time.substr(0, 5);
+  //         dateString = meet.date.toString();
+  //         dateFormated = dateString.substr(0, 16);
+
+  //         return {
+  //           ...meet,
+  //           dateFormated,
+  //           timeFormated,
+  //         };
+  //       });
+  //     res.render('', {
+  //       meetsArray,
+  //     });
+  //   });
+  // });
 
   app.get('/api/users', function(req, res) {
     db.User.findAll({

@@ -3,7 +3,6 @@ const session = require('express-session');
 const expbs = require('express-handlebars');
 const path = require('path');
 const passport = require('./config/passport');
-// const bodyParser = require('body-parser');
 
 var PORT = process.env.PORT || 8000;
 var db = require('./models/index');
