@@ -1,0 +1,24 @@
+{{#each meetsArray}}
+<div class="item">
+    <div class="card-meet">
+        <div class="img-meet-container">
+            <img class="img-meet" src={{ image_url }} alt="meet-related-image" />
+        </div>
+    </div>
+    <div class="card-meet-content">
+        <div class="card-meet-title">
+            <h2>{{ title }}</h2>
+        </div>
+    </div>
+    <div class="card-meet-location-container">
+        <h5 class="card-meet-location">Location</h5>
+    </div>
+    <div class="card-meet-details">
+        <h6 class="card-meet-date">{{ dateFormated }}</h6>
+        <h6 class="card-meet-time">{{ timeFormated }}</h6>
+    </div>
+    <div class="card-meet-description">
+        <p>{{ description }}</p>
+    </div>
+</div>
+{{/each}}

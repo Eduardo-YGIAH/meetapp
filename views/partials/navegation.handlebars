@@ -1,0 +1,65 @@
+<nav class="navbarContainer">
+    <div class="navLinksContainer">
+        <!-- Link the h2 to load home when clicked -->
+        <h2 class="nav-logo"><a class="logo" href="/">Meetapp</a></h2>
+
+        <!-- The uls need to be a handlebars partial -->
+        <!-- --------------- -->
+        <!-- Render this ul if user is logged out -->
+        {{#unless user}}
+        <ul class="nav-links-list user-logged-out">
+            <li class="nav-link-item"><a class="nav-link" href="/login">Login</a></li>
+            <li class="nav-link-item"><a class="nav-link" href="/signup">Signup</a></li>
+        </ul>
+        {{/unless}}
+        <!-- --------------- -->
+        <!-- Render this ul if user is logged in  -->
+        {{#if user}}
+        <ul class="nav-links-list user-logged-in">
+            <li class="nav-link-item">
+                <a class="nav-link" href="/meets">My <span class="brand">Meets</span></a>
+            </li>
+            <li class="nav-link-item"><a class="nav-link" href="/bookings">My Bookings</a></li>
+            <li class="nav-link-item">
+                <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
+            </li>
+            <!-- image is dinamacly selected from user object -->
+            <li class="nav-link-item">
+                <a class="nav-link" href="/profile"><img class="avatar"
+                        src="https://res.cloudinary.com/ygiah/image/upload/v1579778125/Avatars/image_11.jpg" /></a>
+            </li>
+        </ul>
+        {{/if}}
+    </div>
+</nav>
+<div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+</div>
+{{#unless user}}
+<<ul class="nav-slider-links user-logged-out">
+    <li class="nav-slider-link-item"></li>
+    <li class="nav-slider-link-item"><a class="nav-link" href="/login">Login</a></li>
+    <li class="nav-slider-link-item"><a class="nav-link" href="/signup">Signup</a></li>
+    </ul>
+    {{/unless}}
+    {{#if user}}
+    <ul class="nav-slider-links user-logged-in">
+        <li class="nav-slider-link-item slider-avatar-li">
+            <a class="nav-link" href="/profile"><img class="avatar"
+                    src="https://res.cloudinary.com/ygiah/image/upload/v1579778125/Avatars/image_11.jpg" /></a>
+            <div class="user-details-container">
+                <div class="user-name">Eduardo Neto</div>
+                <div class="user-location">Royal Leamington Spa</div>
+            </div>
+        </li>
+        <li class="nav-slider-link-item">
+            <a class="nav-link" href="/meets">My <span class="brand">Meets</span></a>
+        </li>
+        <li class="nav-slider-link-item"><a class="nav-link" href="/bookings">My Bookings</a></li>
+        <li class="nav-slider-link-item">
+            <a class="nav-link" href="/create">Create a <span class="brand">Meet</span></a>
+        </li>
+    </ul>
+    {{/if}}
