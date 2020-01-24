@@ -1,5 +1,5 @@
-const db = require('../models/index');
-const passport = require('../config/passport');
+const db = require("../models/index");
+const passport = require("../config/passport");
 
 module.exports = function(app) {
   // AUTHENTICATION
@@ -7,32 +7,37 @@ module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post('/api/login', passport.authenticate('local'), function(req, res) {
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json(req.user);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post('/api/signup', function(req, res) {
-    db.User.create({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      email: req.body.email,
-      password: req.body.password,
-    })
-      .then(function() {
-        res.redirect(307, '/api/login');
+  app.post("/api/signup", function(req, res) {
+    const { first_name, last_name, email, password } = req.body;
+    if (first_name && last_name && email && password) {
+      db.User.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password: req.body.password
       })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
+        .then(function() {
+          res.redirect(307, "/api/login");
+        })
+        .catch(function(err) {
+          res.status(401).json(err);
+        });
+    } else {
+      res.status(422).json("Bad input");
+    }
   });
 
   // Route for logging user out
-  app.get('/logout', function(req, res) {
+  app.get("/logout", function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect("/");
   });
 
   // Route for getting some data about our user to be used client side
@@ -50,17 +55,17 @@ module.exports = function(app) {
   //   }
   // });
 
-  app.get('/api/locations', function(req, res) {
+  app.get("/api/locations", function(req, res) {
     db.Location.findAll({
-      attributes: ['id', 'town'],
+      attributes: ["id", "town"]
     })
       .then(locations => {
         res.json(
           locations.map(location => {
             return {
-              ...location.dataValues,
+              ...location.dataValues
             };
-          }),
+          })
         );
       })
       .catch(error => {
@@ -69,7 +74,7 @@ module.exports = function(app) {
       });
   });
 
-  app.get('/api/search_location', function(req, res) {
+  app.get("/api/search_location", function(req, res) {
     const town = req.body.search_location;
     console.log(town);
 
@@ -87,7 +92,7 @@ module.exports = function(app) {
     //         return ice_cream.dataValues.devoured === true;
     //     })
     //     // sends back the list of eaten and not eaten icecreams to index.handlebars where the HTML is renderend
-    res.render('landing', { town });
+    res.render("landing", { town });
   });
 
   // app.get('/api/search_location', (req, res) => {
@@ -127,17 +132,24 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.get('/api/users', function(req, res) {
+  app.get("/api/users", function(req, res) {
     db.User.findAll({
-      attributes: ['id', 'first_name', 'last_name', 'image_url', 'email', 'locationId'],
+      attributes: [
+        "id",
+        "first_name",
+        "last_name",
+        "image_url",
+        "email",
+        "locationId"
+      ]
     })
       .then(users => {
         res.json(
           users.map(user => {
             return {
-              ...user.dataValues,
+              ...user.dataValues
             };
-          }),
+          })
         );
       })
       .catch(error => {
@@ -146,32 +158,32 @@ module.exports = function(app) {
       });
   });
 
-  app.get('/api/meets', function(req, res) {
+  app.get("/api/meets", function(req, res) {
     db.Meet.findAll({
       attributes: [
-        'id',
-        'title',
-        'date',
-        'time',
-        'description',
-        'limit_of_attendees',
-        'first_line_address',
-        'second_line_address',
-        'post_code',
-        'image_url',
-        'createdAt',
-        'updatedAt',
-        'organizerId',
-        'locationId',
-      ],
+        "id",
+        "title",
+        "date",
+        "time",
+        "description",
+        "limit_of_attendees",
+        "first_line_address",
+        "second_line_address",
+        "post_code",
+        "image_url",
+        "createdAt",
+        "updatedAt",
+        "organizerId",
+        "locationId"
+      ]
     })
       .then(meets => {
         res.json(
           meets.map(meet => {
             return {
-              ...meet.dataValues,
+              ...meet.dataValues
             };
-          }),
+          })
         );
       })
       .catch(error => {
