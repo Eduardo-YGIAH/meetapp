@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "$(npm bin)/eslint '**/*.js'"
+    "lint": "$(npm bin)/eslint '**/*.js'",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
