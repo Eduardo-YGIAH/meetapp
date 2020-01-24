@@ -5,9 +5,10 @@ module.exports = function(app) {
   app.get('/', (req, res) => {
     // If the user already has an account send them to the index page
     if (req.user) {
-      db.User.findOne(User.email === req.user.email);
-      res.render('index', {
-        user,
+      db.User.findOne(db.User.email === req.user.email).then(user => {
+        res.render('index', {
+          user,
+        });
       });
     } else {
       db.Meet.findAll({
