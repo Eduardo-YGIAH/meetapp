@@ -4,11 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     "Meet",
     {
       title: DataTypes.STRING,
-      description: DataTypes.STRING
+      description: DataTypes.STRING,
+      image: DataTypes.STRING
     },
     {}
   );
-  Meet.associate = function(models) {
+  Meet.associate = function() {
     // Meet.hasMany(models.User, { foreignKey: "id" });
   };
   return Meet;

@@ -6,11 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
-      password: DataTypes.STRING
+      password: DataTypes.STRING,
+      image: DataTypes.STRING
     },
     {}
   );
-  User.associate = function(models) {
+  User.associate = function() {
     // User.hasMany(models.meet);
     // User.belongsTo(models.mmet);
   };

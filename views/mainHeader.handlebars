@@ -1,0 +1,53 @@
+<header class="header-container">
+    <div class="background">
+        <img src="./static-files/people_shadow.svg" alt="background-shadow-of-people-in-party">
+    </div>
+    {{#if }}
+    <h1 class="main-heading">Meet new people like you!</h1>
+
+    <div class="overlay">
+
+    </div>
+</header>
+
+<header class="header-container">
+    <div class="background">
+        <img src="./static-files/people_shadow.svg" alt="background-shadow-of-people-in-party">
+    </div>
+    {{#if user}}
+    <h1 class="main-heading">Hi {{firstName}}! Here are <span class="brand" style="color: #F44336;">Meets</span> in
+        {{town}}.</h1>
+    <h2 class="sub-heading">Click your favourite to see details and book attendance.</h2>
+    {{else}}
+    <h1 class="main-heading">Meet new people like you!</h1>
+    <h2 class="sub-heading">Find a <span class="brand sub-heading">Meet</span> for you or create your own!</h2>
+    <form action="/api/search-location" method="GET" class="search-form">
+
+        <label class="search-location-label" for="search-location"><span class="brand">Meets</span> in your
+            location</label>
+        <div class="autocomplete">
+            <input type="text" class="search-location-input" id="search-location" name="search-location"
+                placeholder="Enter your location" autocomplete="off">
+        </div>
+        <button class="btn-search-location">SHOW MEETS</button>
+    </form>
+
+    {{>slider}}}
+
+
+
+
+
+
+
+
+    <!-- <form action="/api/search-location" method="GET" class="search-form">
+        
+            <label class="search-location-label" for="search-location"><span class="brand">Meets</span> in your location</label>
+            <div class="autocomplete">
+                <input type="text" class="search-location-input" id="search-location" name="search-location" placeholder="Enter your location" autocomplete="off">
+            </div>
+            <button class="btn-search-location">SHOW MEETS</button>
+        </form> -->
+    <div class="overlay"></div>
+</header>

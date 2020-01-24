@@ -1,0 +1,46 @@
+.container-main {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 50px 50px;
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 2%;
+  box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25),
+    4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-inside {
+  padding: 10px;
+}
+.red {
+  color: #f44336;
+}
+
+.container-columns {
+  display: flex;
+
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25),
+    4px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 20px;
+}
+
+.container-column {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.divider {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f44336;
+  margin-bottom: 20px;
+}
