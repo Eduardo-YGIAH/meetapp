@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+.slider-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail-slider {
+  margin-top: 10px;
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+
+.thumbnail-slider .thumbnail-container {
+  width: 100%;
+  float: left;
+  transition: margin 1s ease;
+}
+
+/* card styles here */
+
+.thumbnail-slider .item {
+  height: 200px;
+  background-color: #ffff;
+  overflow: hidden;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #555555;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(227, 227, 227, 0.25);
+  border-radius: 6px;
+  float: left;
+}
+
+.img-meet-container {
+  width: 100%;
+  height: 100px;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+}
+.card-meet-title h2 {
+  font-size: 16px;
+  margin: 0;
+  padding: 6px;
+}
+
+.img-meet {
+  width: 100%;
+}
+
+.card-meet-location,
+.card-meet-date,
+.card-meet-time {
+  margin: 0px;
+  padding: 0px;
+  font-weight: 300;
+}
+
+.card-meet-location {
+  padding: 0px 10px;
+  float: left;
+}
+.card-meet-date {
+  padding-right: 4px;
+  float: left;
+}
+
+.card-meet-description {
+  margin: 0;
+  padding: 6px 10px;
+}
+
+.card-meet-description p {
+  font-size: 12px;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* slider controls */
+
+.thumbnail-slider .controls {
+  width: 100%;
+  float: left;
+  padding: 15px;
+}
+
+.thumbnail-slider .controls ul {
+  display: block;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.thumbnail-slider .controls ul li {
+  height: 10px;
+  width: 35px;
+  border: 1px solid #c3c3c3;
+  margin: 4px;
+  display: inline-block;
+  /* line-height: 33px; */
+  border-radius: 5px;
+  cursor: pointer;
+}
+.thumbnail-slider .controls ul li.active {
+  background-color: #f44336;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 930px) {
+  .thumbnail-slider {
+    margin-top: 20px;
+  }
+}
