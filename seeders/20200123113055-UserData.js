@@ -14,7 +14,8 @@ module.exports = {
         password: faker.internet.password(),
         createdAt: new Date(),
         updatedAt: new Date(),
-        locationId: 1130
+        locationId: 1130,
+        meetId: null
       },
       {
         image_url:
@@ -25,7 +26,8 @@ module.exports = {
         password: faker.internet.password(),
         createdAt: new Date(),
         updatedAt: new Date(),
-        locationId: 1130
+        locationId: 1130,
+        meetId: null
       },
       {
         image_url:
@@ -36,7 +38,8 @@ module.exports = {
         password: faker.internet.password(),
         createdAt: new Date(),
         updatedAt: new Date(),
-        locationId: 1130
+        locationId: 1130,
+        meetId: null
       },
       {
         image_url:
@@ -47,7 +50,8 @@ module.exports = {
         password: faker.internet.password(),
         createdAt: new Date(),
         updatedAt: new Date(),
-        locationId: 1130
+        locationId: 1130,
+        meetId: null
       },
       {
         image_url:
@@ -58,7 +62,8 @@ module.exports = {
         password: faker.internet.password(),
         createdAt: new Date(),
         updatedAt: new Date(),
-        locationId: 1130
+        locationId: 1130,
+        meetId: null
       },
       {
         image_url:
@@ -69,7 +74,8 @@ module.exports = {
         password: faker.internet.password(),
         createdAt: new Date(),
         updatedAt: new Date(),
-        locationId: 1130
+        locationId: 1130,
+        meetId: null
       },
       {
         image_url:
@@ -80,7 +86,8 @@ module.exports = {
         password: faker.internet.password(),
         createdAt: new Date(),
         updatedAt: new Date(),
-        locationId: 1130
+        locationId: 1130,
+        meetId: null
       }
     ];
 

@@ -16,15 +16,16 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     const { first_name, last_name, email, password } = req.body;
+
     if (first_name && last_name && email && password) {
       db.User.create({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email,
-        password: req.body.password
+        first_name,
+        last_name,
+        email,
+        password
       })
         .then(function() {
-          res.redirect(307, "/api/login");
+          res.redirect("/login");
         })
         .catch(function(err) {
           res.status(401).json(err);

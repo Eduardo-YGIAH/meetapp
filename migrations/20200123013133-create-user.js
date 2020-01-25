@@ -30,6 +30,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      meetId: {
+        allowNull: true,
+        type: Sequelize.STRING
       }
     });
   },

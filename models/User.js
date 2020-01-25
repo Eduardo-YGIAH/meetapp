@@ -28,11 +28,15 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    meetId: {
+      allowNull: true,
+      type: DataTypes.STRING
     }
   });
   User.associate = function(models) {
     User.hasOne(models.Location, {
-      // foreignKey: 'userLocation',
+      foreignKey: "userLocation"
     });
     User.belongsToMany(models.Meet, { through: "Bookings" });
   };
