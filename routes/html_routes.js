@@ -1,37 +1,29 @@
-const isAuthenticated = require("../config/middleware/isAuthenticated");
-const db = require("../models/index");
+const isAuthenticated = require('../config/middleware/isAuthenticated');
+const db = require('../models/index');
 
 module.exports = function(app) {
-  app.get("/", (req, res) => {
+  app.get('/', (req, res) => {
     // If the user already has an account send them to the index page
     if (req.user) {
+      console.log('THIS IS THE REQ.USER VALUE = ' + req.user.first_name);
       db.User.findOne({
         where: {
-          email: req.user.email
-        }
+          email: req.user.email,
+        },
       }).then(user => {
         console.log(user);
-        res.render("index", {
-          user
+        res.render('index', {
+          user,
         });
       });
     } else {
       db.Meet.findAll({
-        attributes: [
-          "id",
-          "title",
-          "date",
-          "time",
-          "image_url",
-          "description",
-          "locationId",
-          "organizerId"
-        ]
+        attributes: ['id', 'title', 'date', 'time', 'image_url', 'description', 'locationId', 'organizerId'],
       }).then(meets => {
         const meetsArray = meets
           .map(meet => {
             return {
-              ...meet.dataValues
+              ...meet.dataValues,
             };
           })
           .map(meet => {
@@ -44,39 +36,45 @@ module.exports = function(app) {
             return {
               ...meet,
               dateFormated,
-              timeFormated
+              timeFormated,
             };
           });
 
         console.log(meetsArray[0]);
-        res.render("landing", {
-          meetsArray
+        res.render('landing', {
+          meetsArray,
         });
       });
     }
   });
 
-  app.get("/login", (req, res) => {
+  app.get('/login', (req, res) => {
     if (req.user) {
-      res.render("index");
+      res.render('index');
     }
-    res.render("login");
+    res.render('login');
   });
 
-  app.get("/signup", (req, res) => {
+  app.get('/signup', (req, res) => {
     if (req.user) {
-      res.render("index", {
-        message: "You are currently logged in."
+      res.render('index', {
+        message: 'You are currently logged in.',
       });
     }
-    res.render("signup");
+    res.render('signup');
   });
 
-  app.get("/profile", isAuthenticated, (req, res) => {
-    res.render("profile");
+  app.get('/profile', isAuthenticated, (req, res) => {
+    let { first_name, last_name, email, image_url } = req.user;
+    res.render('profile', {
+      first_name,
+      last_name,
+      email,
+      image_url,
+    });
   });
 
-  app.get("/", isAuthenticated, (req, res) => {
-    res.render("index");
+  app.get('/', isAuthenticated, (req, res) => {
+    res.render('index');
   });
 };

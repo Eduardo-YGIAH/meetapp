@@ -1,8 +1,36 @@
 {{> navigation}}
-<div class="contentBodyContainer">
-    <div class="contentBody">
-        <h2>My Profile</h2>
+<div class="container">
+    <div class="row">
+        <div class="contentBody">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>Profile</h2>
+                {{#if image_url}}
+                <img class="avatar" src={{ image_url }} />
+                {{ else }}
+                <img class="avatar"
+                    src="https://res.cloudinary.com/ygiah/image/upload/v1579778124/Avatars/image_7.jpg" />
+                {{/if }}
 
+                <form class="profile">
 
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" name="firstName" class="form-control" id="firstName-input"
+                            placeholder="First Name" value={{ first_name }} />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" name="lastName" class="form-control" id="lastName-input"
+                            placeholder="Last Name" value={{ last_name }} />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputLocation1">Location</label>
+                        <input type="text" name="location" class="form-control" id="location-input"
+                            placeholder="Location" {{#if user_location }} value={{ user_location }} {{/if }} />
+                    </div>
+                    <button type="submit" class="btn-submit">Update</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
