@@ -30,7 +30,7 @@ body {
 .thumbnail-slider .item {
   height: 200px;
   background-color: #ffff;
-
+  overflow: hidden;
   font-family: Work Sans;
   font-style: normal;
   font-weight: normal;
