@@ -5,7 +5,6 @@ module.exports = function(app) {
   app.get("/", (req, res) => {
     // If the user already has an account send them to the index page
     if (req.user) {
-      console.log("BISH", db.User.email, req.user.email);
       db.User.findOne({
         where: {
           email: req.user.email
@@ -29,7 +28,6 @@ module.exports = function(app) {
           "organizerId"
         ]
       }).then(meets => {
-        console.log("yo");
         const meetsArray = meets
           .map(meet => {
             return {
@@ -72,6 +70,10 @@ module.exports = function(app) {
       });
     }
     res.render("signup");
+  });
+
+  app.get("/profile", isAuthenticated, (req, res) => {
+    res.render("profile");
   });
 
   app.get("/", isAuthenticated, (req, res) => {
