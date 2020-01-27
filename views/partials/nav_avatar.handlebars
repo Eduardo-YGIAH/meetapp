@@ -1,0 +1,23 @@
+{{#if image_url}}
+<li class="nav-slider-link-item slider-avatar-li">
+    <a class="nav-link" href="/profile"><img class="avatar" src={{ image_url }} /></a>
+    <div class="user-details-container">
+        <div class="user-name">
+            <span>{{ first_name }}</span>
+            <span> </span>
+            <span>{{ last_name }}</span></div>
+        <div class="user-location">Royal Leamington Spa</div>
+    </div>
+</li>
+{{else }}
+<li class="nav-slider-link-item slider-avatar-li">
+    <a class="nav-link" href="/profile"><img class="avatar"
+            src="https://res.cloudinary.com/ygiah/image/upload/v1579778125/Avatars/image_11.jpg" /></a>
+    <div class="user-details-container">
+        <div class="user-name">Eduardo Neto</div>
+        {{#if location}}
+        <div class="user-location">{{ location }}/div>
+            {{/if}}
+        </div>
+</li>
+{{/if }}

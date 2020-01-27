@@ -1,5 +1,10 @@
 const db = require('../models/index');
+const { Op, QueryTypes } = require('sequelize');
 const passport = require('../config/passport');
+const isAuthenticated = require('../config/middleware/isAuthenticated');
+const cloudinary = require('cloudinary');
+require('../config/cloudinary_config');
+const upload = require('../config/multer_config');
 
 module.exports = function(app) {
   // AUTHENTICATION
@@ -12,6 +17,7 @@ module.exports = function(app) {
     passport.authenticate('local', {
       successRedirect: '/profile',
       failureRedirect: '/login',
+      failureFlash: true,
     }),
     function(req, res) {
       res.redirect('/profile');
@@ -139,6 +145,73 @@ module.exports = function(app) {
   //     });
   //   });
   // });
+
+  app.post('/api/upload_avatar', upload.single('image'), async (req, res) => {
+    const result = await cloudinary.v2.uploader.upload(req.file.path);
+    await db.User.update(
+      { image_url: result.secure_url },
+      {
+        where: {
+          email: req.user.email,
+        },
+      },
+    );
+    var user = req.user;
+    user.image_url = result.secure_url;
+    req.logIn(user, function(error) {
+      if (!error) {
+        // successfully serialized user to session
+        res.redirect('/profile');
+      }
+    });
+  });
+
+  app.post('/profile_details_update', isAuthenticated, async (req, res) => {
+    try {
+      const { first_name, last_name, location } = await req.body;
+      console.log(location);
+      const location_id = await db.Location.findAll({
+        attributes: ['id'],
+        where: {
+          town: {
+            [Op.like]: `%${location}%`,
+          },
+        },
+      });
+      console.log(req.session.passport.user);
+      console.log('The value of location Id is = ' + location_id[0].dataValues.id);
+      await db.User.sequelize.query(
+        'UPDATE users SET first_name = :first_name, last_name = :last_name, locationId = :locationId WHERE email = :email',
+        {
+          replacements: {
+            first_name: first_name,
+            last_name: last_name,
+            locationId: Number(location_id[0].dataValues.id),
+            email: req.user.email,
+          },
+          type: QueryTypes.SELECT,
+        },
+      );
+      console.log(req.session.passport.user);
+      var user = req.user;
+      console.log(user);
+
+      user.first_name = first_name;
+      user.last_name = last_name;
+      user.location = location;
+      console.log(user.first_name);
+      console.log(user.last_name);
+      console.log(user.location);
+
+      req.logIn(user, function(error) {
+        if (!error) {
+          res.redirect('/profile');
+        }
+      });
+    } catch (err) {
+      console.log('MY BIG ERROR WAS: ' + err);
+    }
+  });
 
   app.get('/api/users', function(req, res) {
     db.User.findAll({

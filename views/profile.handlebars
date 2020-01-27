@@ -10,23 +10,34 @@
                 <img class="avatar"
                     src="https://res.cloudinary.com/ygiah/image/upload/v1579778124/Avatars/image_7.jpg" />
                 {{/if }}
+                <form action="/api/upload_avatar" method="POST" enctype="multipart/form-data">
+                    <div>
+                        <label for="image"></label>
+                        <input style="max-width: 90%;" type="file" name="image" id="image">
+                    </div>
+                    <button type="submit" class="btn-submit">Save</button>
+                </form>
 
-                <form class="profile">
+                <form class="profile" action="/profile_details_update" method="POST">
 
-                    <div class="form-group">
+                    <div class=" form-group">
                         <label for="firstName">First Name</label>
-                        <input type="text" name="firstName" class="form-control" id="firstName-input"
+                        <input type="text" name="first_name" class="form-control" id="firstName-input"
                             placeholder="First Name" value={{ first_name }} />
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name</label>
-                        <input type="text" name="lastName" class="form-control" id="lastName-input"
+                        <input type="text" name="last_name" class="form-control" id="lastName-input"
                             placeholder="Last Name" value={{ last_name }} />
                     </div>
                     <div class="form-group">
                         <label for="exampleInputLocation1">Location</label>
+                        {{#if location }}
                         <input type="text" name="location" class="form-control" id="location-input"
-                            placeholder="Location" {{#if user_location }} value={{ user_location }} {{/if }} />
+                            value={{ location }} />
+                        {{else}}
+                        <input type="text" name="location" class="form-control" id="location-input" />
+                        {{/if }}
                     </div>
                     <button type="submit" class="btn-submit">Update</button>
                 </form>
