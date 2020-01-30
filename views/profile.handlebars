@@ -1,49 +1,53 @@
-{{> navigation}}
-<div class="container">
-    <div class="row">
-        <div class="contentBody">
-            <div class="col-md-6 col-md-offset-3">
-                <h2>Profile</h2>
-                {{#if image_url}}
-                <img class="avatar" src={{ image_url }} />
-                {{ else }}
-                <img class="avatar"
-                    src="https://res.cloudinary.com/ygiah/image/upload/v1579778124/Avatars/image_7.jpg" />
-                {{/if }}
-                <form action="/api/upload_avatar" method="POST" enctype="multipart/form-data">
-                    <div>
-                        <label for="image"></label>
-                        <input style="max-width: 90%;" type="file" name="image" id="image">
-                    </div>
-                    <button type="submit" class="btn-submit">Save</button>
-                </form>
+{{> navigation this}}
+<div class="contentBodyContainer">
 
-                <form class="profile" action="/profile_details_update" method="POST">
+    <div class="contentBody">
+        <div>
+            <h2>Profile</h2>
+            {{#if image_url}}
+            <img class="avatar" style="width: 100px; height: 100px;" src={{ image_url }} />
+            {{ else }}
+            <div class="no-avatar">EN</div>
+            {{/if }}
+            <form action="/api/upload_avatar" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="image"></label>
+                    <input style="max-width: 90%;" type="file" name="image" id="image">
+                </div>
+                <button type="submit" class="btn-submit">Save</button>
+            </form>
 
-                    <div class=" form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" name="first_name" class="form-control" id="firstName-input"
-                            placeholder="First Name" value={{ first_name }} />
+            <form class="profile" action="/profile_details_update" method="POST">
+
+                <div class=" form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name" class="form-control" id="first_name" placeholder="First Name"
+                        value={{ first_name }} />
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="last_name" class="form-control" id="lastName-input" placeholder="Last Name"
+                        value={{ last_name }} />
+                </div>
+                <div class="form-group">
+                    {{#if location }}
+                    <label for="location">Location - {{ location }}</label>
+                    <div class="autocomplete">
+                        <input type="text" name="location" class="form-control search-location-input"
+                            id="location-input" autocomplete="off" value={{ location }} />
                     </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" name="last_name" class="form-control" id="lastName-input"
-                            placeholder="Last Name" value={{ last_name }} />
+                    {{else}}
+                    <label for="location">Location</label>
+                    <div class="autocomplete">
+                        <input type="text" name="location" class="form-control search-location-input"
+                            id="location-input" autocomplete="off" />
                     </div>
-                    <div class="form-group">
-                        {{#if location }}
-                        <label for="exampleInputLocation1">Location - {{ location }}</label>
-                        {{else}}
-                        <label for="exampleInputLocation1">Location</label>
-                        {{/if }}
-                        <div class="autocomplete">
-                            <input type="text" name="location" class="form-control search-location-input"
-                                id="location-input" autocomplete="off" />
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-submit">Update</button>
-                </form>
-            </div>
+                    {{/if }}
+
+                </div>
+                <button type="submit" class="btn-submit">Update</button>
+            </form>
         </div>
     </div>
+
 </div>

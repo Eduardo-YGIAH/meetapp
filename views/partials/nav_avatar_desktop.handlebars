@@ -1,0 +1,11 @@
+{{#unless image_url}}
+<a class="nav-link" href="/profile">
+    <div class="no-avatar">
+        <p class="avatar-initials">EN</p>
+    </div>
+</a>
+{{else}}
+<li class="nav-link-item">
+    <a class="nav-link" href="/profile"><img class="avatar" src={{ image_url }} /></a>
+</li>
+{{/unless }}

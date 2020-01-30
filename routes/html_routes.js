@@ -5,16 +5,38 @@ module.exports = function(app) {
   app.get('/', (req, res) => {
     // If the user already has an account send them to the index page
     if (req.user) {
-      console.log('THIS IS THE REQ.USER VALUE = ' + req.user.first_name);
-      db.User.findOne({
-        where: {
-          email: req.user.email,
-        },
-      }).then(user => {
-        console.log(user);
-        res.render('index', {
-          user,
-        });
+      // db.Meet.findAll({
+      //   where: {
+      //     meetLocationId: Number(req.user.userLocationId),
+      //   },
+      // }).then(meets => {
+      //   const meetsArray = meets
+      //     .map(meet => {
+      //       return {
+      //         ...meet.dataValues,
+      //       };
+      //     })
+      //     .map(meet => {
+      //       let dateString;
+      //       let dateFormated;
+      //       let timeFormated = meet.time.substr(0, 5);
+      //       dateString = meet.date.toString();
+      //       dateFormated = dateString.substr(0, 16);
+
+      //       return {
+      //         ...meet,
+      //         dateFormated,
+      //         timeFormated,
+      //       };
+      //     });
+
+      //   console.log(meetsArray[0]);
+      const data = {
+        user: req.user,
+        // meet: meetsArray,
+      };
+      res.render('index', {
+        data,
       });
     } else {
       db.Meet.findAll({
@@ -75,16 +97,38 @@ module.exports = function(app) {
 
   app.get('/profile', isAuthenticated, (req, res) => {
     let { first_name, last_name, email, image_url, location } = req.user;
-    res.render('profile', {
+    const data = {
       first_name,
       last_name,
       email,
       image_url,
       location,
-    });
+    };
+    res.render('profile', data);
   });
 
-  app.get('/', isAuthenticated, (req, res) => {
-    res.render('index');
+  app.get('/create', isAuthenticated, (req, res) => {
+    const data = {
+      user: req.user,
+    };
+    res.render('create_meet', data);
+  });
+
+  app.get('/meet_edit', isAuthenticated, (req, res) => {
+    let { first_name, last_name, email, image_url, location } = req.user;
+    let { title, description, date, time, limit_of_attendees } = req.body;
+    const data = {
+      first_name,
+      last_name,
+      email,
+      image_url,
+      location,
+      title,
+      description,
+      date,
+      time,
+      limit_of_attendees,
+    };
+    res.render('edit_meet', data);
   });
 };

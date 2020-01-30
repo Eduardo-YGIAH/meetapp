@@ -68,7 +68,6 @@ module.exports = function(app) {
   //     });
   //   }
   // });
-
   app.get('/api/locations', function(req, res) {
     db.Location.findAll({
       attributes: ['id', 'town'],
@@ -166,10 +165,29 @@ module.exports = function(app) {
     });
   });
 
+  app.post('/api/upload_meet_image', upload.single('image'), async (req, res) => {
+    const result = await cloudinary.v2.uploader.upload(req.file.path);
+    await db.Meet.update(
+      { image_url: result.secure_url },
+      {
+        where: {
+          email: req.user.email,
+        },
+      },
+    );
+    var user = req.user;
+    user.image_url = result.secure_url;
+    req.logIn(user, function(error) {
+      if (!error) {
+        // successfully serialized user to session
+        res.redirect('/meet_edit');
+      }
+    });
+  });
+
   app.post('/profile_details_update', isAuthenticated, async (req, res) => {
     try {
       const { first_name, last_name, location } = await req.body;
-      console.log(location);
       const location_id = await db.Location.findAll({
         attributes: ['id'],
         where: {
@@ -178,11 +196,6 @@ module.exports = function(app) {
           },
         },
       });
-      console.log(req.session.passport.user);
-      console.log('The value of location Id is = ' + location_id[0].dataValues.id);
-
-      //TESTS star here:
-
       await db.User.sequelize.query(
         'UPDATE users SET first_name = :first_name, last_name = :last_name, userLocationId = :userLocationId WHERE email = :email',
         {
@@ -195,17 +208,15 @@ module.exports = function(app) {
           type: QueryTypes.UPDATE,
         },
       );
-
-      console.log(req.session.passport.user);
       var user = req.user;
-      console.log(user);
-
       user.first_name = first_name;
       user.last_name = last_name;
       user.location = location;
       console.log(user.first_name);
       console.log(user.last_name);
       console.log(user.location);
+      console.log(user.email);
+      console.log(user.image_url);
 
       req.logIn(user, function(error) {
         if (!error) {
@@ -268,5 +279,40 @@ module.exports = function(app) {
         console.log(error);
         res.end();
       });
+  });
+
+  app.post('/api/create', function(req, res) {
+    const { title, date, time, description, first_line_address, second_line_address, post_code } = req.body;
+    const limit_of_attendees = Number(req.body.limit_of_atendees);
+    if (
+      title &&
+      date &&
+      time &&
+      description &&
+      limit_of_attendees &&
+      first_line_address &&
+      second_line_address &&
+      post_code
+    ) {
+      db.Meet.create({
+        title,
+        date,
+        time,
+        description,
+        limit_of_attendees,
+        first_line_address,
+        second_line_address,
+        post_code,
+        meetUserOrganizer: req.user.id,
+      })
+        .then(function() {
+          res.redirect('/meet_edit');
+        })
+        .catch(function(err) {
+          res.status(401).json(err);
+        });
+    } else {
+      res.status(422).json('Bad input');
+    }
   });
 };

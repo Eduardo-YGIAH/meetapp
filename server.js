@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8000;
 const db = require('./models/index');
 
 const app = express();
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(flash());
 app.use('/css', express.static(path.join(__dirname, 'public/css')));

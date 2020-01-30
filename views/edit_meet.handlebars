@@ -4,11 +4,13 @@
 
     <div class="contentBody">
         <div>
-            <h2>Create Meet</h2>
-            <form class="new-meet" action="/api/create" method="POST">
+            <h2>Edit Meet</h2>
+            {{ data.meet.title }}
+            <form class="new-meet" action="/api/edit_meet" method="POST">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input name="title" type="text" class="form-control" id="title-input" placeholder="Title" />
+                    <input name="title" type="text" class="form-control" id="title-input" placeholder="Title"
+                        value={{ title }} />
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
@@ -29,27 +31,28 @@
                     </div>
                     {{/if }}
                     <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" name="date" placeholder="24/01/2020" />
+                        <label for="meetDate">Date</label>
+                        <input type="date" class="form-control" id="meetDate" name="meetDate"
+                            placeholder="24/01/2020" />
                     </div>
                     <div class="form-group">
-                        <label for="time">Time</label>
-                        <input type="time" class="form-control" id="time" name="time" placeholder="17:30" />
+                        <label for="meetTime">Time</label>
+                        <input type="time" class="form-control" id="meetTime" name="meetTime" placeholder="17:30" />
                     </div>
                     <div class="form-group">
-                        <label for="limit_of_atendees">Number of Attendees</label>
-                        <input type="number" class="form-control" id="limit_of_atendees" placeholder="20"
-                            name="limit_of_atendees" />
+                        <label for="numberAtendees">Number of Attendees</label>
+                        <input type="number" class="form-control" id="numberAtendees" placeholder="20"
+                            name="numberAtendees" />
                     </div>
                     <div class="form-group">
-                        <label for="first_line_address">Address</label>
-                        <input type="text" class="form-control" id="first_line_address" name="first_line_address"
+                        <label for="meetAdressLineOne">Address</label>
+                        <input type="text" class="form-control" id="meetAdressLineOne" name="meetAdressLineOne"
                             placeholder="Flat 3, 158 Blaskey Hill" />
                         </br>
-                        <input type="text" class="form-control" id="second_line_address" placeholder="Birminham"
-                            name="second_line_address" />
+                        <input type="text" class="form-control" id="meetTown" placeholder="Birminham" name="meetTown" />
                         </br>
-                        <input type="text" class="form-control" id="post_code" placeholder="B12 5EF" name="post_code" />
+                        <input type="text" class="form-control" id="meetPostCode" placeholder="B12 5EF"
+                            name="meetPostCode" />
                     </div>
                     </br>
                     <button type="submit" class="btn-submit">Create</button>
