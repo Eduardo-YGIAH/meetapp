@@ -5,7 +5,7 @@ const path = require('path');
 const passport = require('./config/passport');
 
 const PORT = process.env.PORT || 8000;
-const db = require('./models/index');
+const db = require('./models/index'); /* you can also do const db = require("./models") and it will automatically use the index.js */
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
