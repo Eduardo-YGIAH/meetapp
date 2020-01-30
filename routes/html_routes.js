@@ -14,7 +14,9 @@ module.exports = function(app) {
         res.render("index", {
           user
         });
-      });
+      }); /* if the user is logged in you will also need some meets... so you could wait to see if there is a user, 
+             and then run the next Meet.findAll and pass both the meets and the user (if they exist) to the index.
+      */
     } else {
       db.Meet.findAll({
         attributes: [
@@ -47,7 +49,8 @@ module.exports = function(app) {
               timeFormated
             };
           });
-
+          /* this might be more efficient to merge these two maps otherwise 
+          you are doing two loops when you could be doing just one. */
         console.log(meetsArray[0]);
         res.render("landing", {
           meetsArray
@@ -58,7 +61,7 @@ module.exports = function(app) {
 
   app.get("/login", (req, res) => {
     if (req.user) {
-      res.render("index");
+      res.render("index"); /* or redirect to / so they get the page with their user and meets */
     }
     res.render("login");
   });
@@ -67,7 +70,7 @@ module.exports = function(app) {
     if (req.user) {
       res.render("index", {
         message: "You are currently logged in."
-      });
+      });/* as above */
     }
     res.render("signup");
   });
@@ -76,6 +79,7 @@ module.exports = function(app) {
     res.render("profile");
   });
 
+  /* is this next route necessary? as you already have a app.get("/") which checks for req.user already */
   app.get("/", isAuthenticated, (req, res) => {
     res.render("index");
   });

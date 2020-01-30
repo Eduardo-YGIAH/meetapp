@@ -1,6 +1,10 @@
 window.onload = fetch('/api/locations')
   .then(response => response.json())
   .then(result => {
+
+    /* Most of the comments in this file regard variable naming. It is better to use clear, understandable
+    variable names to enable best human readability and understandability. Clear is better. 
+    see https://dev.to/carlillo/clean-code-applied-to-javascript-part-ii-variables-pc */
     const autocompleteItems = result.map(obj => obj.town);
     const input = document.querySelector('.search-location-input');
 
@@ -16,6 +20,9 @@ window.onload = fetch('/api/locations')
           b,
           i,
           val = this.value;
+          /* Try to avoid using var if you can and use let instead. var creates global variables which
+          can lead to unexpected behaviour if you use the same variable names in other places. */
+
         /*close any already open lists of autocompleted values*/
         closeAllLists();
         if (!val) {
@@ -53,8 +60,13 @@ window.onload = fetch('/api/locations')
       });
       /*execute a function presses a key on the keyboard:*/
       inp.addEventListener('keydown', function(e) {
-        var x = document.getElementById(this.id + 'autocomplete-list');
-        if (x) x = x.getElementsByTagName('div');
+        var x = document.getElementById(this.id + 'autocomplete-list'); 
+        /* try to avoid variables that don't describe what they are. Having a self describing variable name
+        makes the code more readable and understandable by other developers and yourself in the future when 
+        you have forgotten what you wrote.*/
+        if (x) x = x.getElementsByTagName('div'); /* This is bad! don't reuse the same variable name for something
+        different. It goes hand in hand with self describing variable names as above. This x should have it's own
+        describing name. */
         if (e.keyCode === 40) {
           /*If the arrow DOWN key is pressed,
                   increase the currentFocus variable:*/
@@ -93,6 +105,10 @@ window.onload = fetch('/api/locations')
           x[i].classList.remove('autocomplete-active');
         }
       }
+
+      /* Again try to avoid cryptic parameter names. It doesn't take many more characters to type the whole
+      word element rather than elmnt and is clearer and easier to read. You don't need to worry about file size
+      as when it gets bundled up and minified for production all variables become 1 or 2 letter names anyway. */
       function closeAllLists(elmnt) {
         /*close all autocomplete lists in the document,
               except the one passed as an argument:*/
