@@ -31,13 +31,15 @@
                             placeholder="Last Name" value={{ last_name }} />
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputLocation1">Location</label>
                         {{#if location }}
-                        <input type="text" name="location" class="form-control" id="location-input"
-                            value={{ location }} />
+                        <label for="exampleInputLocation1">Location - {{ location }}</label>
                         {{else}}
-                        <input type="text" name="location" class="form-control" id="location-input" />
+                        <label for="exampleInputLocation1">Location</label>
                         {{/if }}
+                        <div class="autocomplete">
+                            <input type="text" name="location" class="form-control search-location-input"
+                                id="location-input" autocomplete="off" />
+                        </div>
                     </div>
                     <button type="submit" class="btn-submit">Update</button>
                 </form>

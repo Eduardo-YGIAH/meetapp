@@ -18,7 +18,16 @@ module.exports = function(app) {
       });
     } else {
       db.Meet.findAll({
-        attributes: ['id', 'title', 'date', 'time', 'image_url', 'description', 'locationId', 'organizerId'],
+        attributes: [
+          'id',
+          'title',
+          'date',
+          'time',
+          'image_url',
+          'description',
+          'meetLocationId',
+          'meetUserOrganizerId',
+        ],
       }).then(meets => {
         const meetsArray = meets
           .map(meet => {
@@ -65,12 +74,13 @@ module.exports = function(app) {
   });
 
   app.get('/profile', isAuthenticated, (req, res) => {
-    let { first_name, last_name, email, image_url } = req.user;
+    let { first_name, last_name, email, image_url, location } = req.user;
     res.render('profile', {
       first_name,
       last_name,
       email,
       image_url,
+      location,
     });
   });
 

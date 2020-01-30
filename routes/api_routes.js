@@ -174,24 +174,28 @@ module.exports = function(app) {
         attributes: ['id'],
         where: {
           town: {
-            [Op.like]: `%${location}%`,
+            [Op.like]: `%${location.trim()}%`,
           },
         },
       });
       console.log(req.session.passport.user);
       console.log('The value of location Id is = ' + location_id[0].dataValues.id);
+
+      //TESTS star here:
+
       await db.User.sequelize.query(
-        'UPDATE users SET first_name = :first_name, last_name = :last_name, locationId = :locationId WHERE email = :email',
+        'UPDATE users SET first_name = :first_name, last_name = :last_name, userLocationId = :userLocationId WHERE email = :email',
         {
           replacements: {
             first_name: first_name,
             last_name: last_name,
-            locationId: Number(location_id[0].dataValues.id),
+            userLocationId: Number(location_id[0].dataValues.id),
             email: req.user.email,
           },
-          type: QueryTypes.SELECT,
+          type: QueryTypes.UPDATE,
         },
       );
+
       console.log(req.session.passport.user);
       var user = req.user;
       console.log(user);
@@ -215,7 +219,7 @@ module.exports = function(app) {
 
   app.get('/api/users', function(req, res) {
     db.User.findAll({
-      attributes: ['id', 'first_name', 'last_name', 'image_url', 'email', 'locationId'],
+      attributes: ['id', 'first_name', 'last_name', 'image_url', 'email', 'userLocationId'],
     })
       .then(users => {
         res.json(
@@ -247,8 +251,8 @@ module.exports = function(app) {
         'image_url',
         'createdAt',
         'updatedAt',
-        'organizerId',
-        'locationId',
+        'meetUserOrganizerId',
+        'meetLocationId',
       ],
     })
       .then(meets => {

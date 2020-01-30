@@ -13,6 +13,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    fullName: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+      set(value) {
+        throw new Error(
+          `Do not try to set the full name value! Unable to use ${value} as full name. You need to set first name and last name individualy.`,
+        );
+      },
+    },
     image_url: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -29,20 +40,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    meetId: {
-      allowNull: true,
-      type: DataTypes.STRING,
-    },
   });
   User.associate = function(models) {
-    User.hasOne(models.Location, {
-      foreignKey: 'locationId',
-      references: {
-        model: 'Locations', // name of Target model
-        key: 'id', // key in Target model that we're referencing
-      },
+    User.belongsTo(models.Location, { targetKey: 'id', foreignKey: 'userLocationId' });
+    User.belongsToMany(models.Meet, {
+      through: 'UserMeetAtendee',
+      sourceKey: 'id',
+      targetKey: 'id',
     });
-    User.belongsToMany(models.Meet, { through: 'Bookings' });
+    User.hasMany(models.Meet, { sourceKey: 'id', foreignKey: 'userId' });
   };
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {

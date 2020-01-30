@@ -1,31 +1,31 @@
-"use strict";
+'use strict';
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     // User Belongs To Many Meets AND Meet Belongs To Many Users
-    return queryInterface.createTable("Bookings", {
+    return queryInterface.createTable('UserMeetAtendee', {
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       userId: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
       },
       meetId: {
         allowNull: true,
         type: Sequelize.INTEGER,
-        primaryKey: true
-      }
+        primaryKey: true,
+      },
     });
   },
 
   down: queryInterface => {
     // remove table
-    return queryInterface.dropTable("Bookings");
-  }
+    return queryInterface.dropTable('UserMeetAtendee');
+  },
 };
