@@ -2,6 +2,9 @@
 <div class="contentBodyContainer">
     <div class="contentBody">
         <h2>Login Form</h2>
+        {{#if messages.error}}
+        {{messages.error}}
+        {{/if}}
 
         <form class="login" action="/api/login" method="POST">
             <div class="form-group">

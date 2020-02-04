@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       date: DataTypes.DATE,
       time: DataTypes.TIME,
-      description: DataTypes.STRING,
+      description: DataTypes.STRING(1200),
       limit_of_attendees: DataTypes.INTEGER,
       first_line_address: DataTypes.STRING,
       second_line_address: DataTypes.STRING,
@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
   Meet.associate = function(models) {
-    Meet.hasOne(models.User, {
-      // foreignKey: 'organizerId',
+    Meet.belongsTo(models.Location, { targetKey: 'id', foreignKey: 'meetLocationId' });
+    Meet.belongsToMany(models.User, {
+      through: 'UserMeetAtendee',
+      sourceKey: 'id',
+      targetKey: 'id',
     });
-    Meet.hasOne(models.Location, {
-      // foreignKey: 'locationId',
-    });
-    Meet.belongsToMany(models.User, { through: 'Bookings' });
+    Meet.belongsTo(models.User, { targetKey: 'id', foreignKey: 'meetUserOrganizerId' });
   };
   return Meet;
 };

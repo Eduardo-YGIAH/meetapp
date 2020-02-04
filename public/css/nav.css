@@ -62,8 +62,24 @@
 
 .avatar {
   width: 50px;
-  height: auto;
+  height: 50px;
   border-radius: 100%;
+}
+
+.no-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: thistle;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.avatar-initials {
+  font-family: Montserrat;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .brand {

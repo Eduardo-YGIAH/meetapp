@@ -4,21 +4,26 @@
   box-sizing: border-box;
 }
 
+.contentBodyContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
 .contentBody {
-  position: absolute;
-  width: 315px;
-  top: 50%;
-  left: 50%;
+  width: 80%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  transform: translate(-50%, -50%);
   background: #ffffff;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
-
   align-content: space-evenly;
 }
 
@@ -37,7 +42,22 @@
   display: flex;
   align-content: space-evenly;
   height: 30px;
-  width: 260px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding-left: 6px;
+  padding-top: 6px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 17px;
+}
+
+.form-group textarea {
+  width: 100%;
   background: #ffffff;
   border: 1px solid #c4c4c4;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);

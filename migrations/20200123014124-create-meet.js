@@ -1,51 +1,51 @@
-"use strict";
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Meets", {
+    return queryInterface.createTable('Meets', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       time: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(1200),
       },
       limit_of_attendees: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       first_line_address: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       second_line_address: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       post_code: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       image_url: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: queryInterface => {
-    return queryInterface.dropTable("Meets");
-  }
+    return queryInterface.dropTable('Meets');
+  },
 };

@@ -1,11 +1,14 @@
-{{> navigation}}
+{{> navigation this}}
 <div class="background">
     <img src="./imgs/people_shadow.svg" alt="background-shadow-of-people-in-party">
 </div>
 <div class="overlay"></div>
 <!-- -------------------- -->
 <div class="content">
-    <h1 class="main-heading">Hi Tom! Here are <span class="brand-red">Meets</span> in Birmingham.</h1>
+    <h1 class="main-heading">Hi <span>{{ first_name }}</span>
+        <span> </span>
+        <span>{{ last_name }}</span>!
+        Here are <span class="brand-red">Meets</span> in <span>{{ location }}</span>.</h1>
     <h2 class="sub-heading">Click your favourite to see details and book attendance.</h2>
     <!-- <form action="/api/search-location" method="GET" class="search-form">
         
